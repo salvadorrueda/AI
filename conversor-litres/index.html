@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor a litres</title>
+  <meta name="description" content="Aplicació educativa per convertir mesures de capacitat a litres, explicant pas a pas la conversió.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="capcalera">
+    <h1>🥤 Conversor a litres</h1>
+    <p>Quants litres són una llauna de 33 cl? I una de 500 ml? Escriu una quantitat, tria la unitat i aprèn <strong>com</strong> es fa la conversió.</p>
+  </header>
+
+  <main>
+    <!-- 1. Entrada de dades -->
+    <section class="targeta" aria-labelledby="titol-conversor">
+      <h2 id="titol-conversor">1. Què vols convertir?</h2>
+      <form id="formulari" class="formulari" autocomplete="off">
+        <label class="camp">
+          <span>Quantitat</span>
+          <input id="valor" type="text" inputmode="decimal" value="33" aria-describedby="error">
+        </label>
+        <label class="camp">
+          <span>Unitat</span>
+          <select id="unitat"></select>
+        </label>
+      </form>
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <div class="exemples">
+        <span class="exemples-titol">Exemples ràpids:</span>
+        <div id="exemples" class="exemples-botons"></div>
+      </div>
+    </section>
+
+    <!-- 2. Resultat -->
+    <section class="targeta resultat" aria-live="polite">
+      <h2>2. Resultat</h2>
+      <p id="resultat" class="resultat-text"></p>
+      <div id="visual" class="visual" aria-hidden="true"></div>
+    </section>
+
+    <!-- 3. Explicació -->
+    <section class="targeta" aria-labelledby="titol-explicacio">
+      <h2 id="titol-explicacio">3. Com s'ha fet la conversió?</h2>
+      <div id="explicacio"></div>
+    </section>
+
+    <!-- 4. L'escala -->
+    <section class="targeta" aria-labelledby="titol-escala">
+      <h2 id="titol-escala">4. L'escala de les unitats de capacitat</h2>
+      <p>Les unitats del sistema mètric decimal van de <strong>10 en 10</strong>. Cada graó que <strong>puges</strong> (cap a una unitat més gran) <strong>divideixes per 10</strong>; cada graó que <strong>baixes</strong> (cap a una unitat més petita) <strong>multipliques per 10</strong>.</p>
+      <div id="escala" class="escala"></div>
+      <p class="truc">💡 <strong>Truc:</strong> dividir per 10 és moure la coma un lloc a l'<strong>esquerra</strong>; multiplicar per 10 és moure-la un lloc a la <strong>dreta</strong>.</p>
+    </section>
+
+    <!-- 5. Taula de referència -->
+    <section class="targeta" aria-labelledby="titol-taula">
+      <h2 id="titol-taula">5. Taula de referència</h2>
+      <div class="taula-contenidor">
+        <table class="taula">
+          <thead>
+            <tr><th>Unitat</th><th>Símbol</th><th>Què vol dir?</th><th>Equivalència en litres</th></tr>
+          </thead>
+          <tbody id="taula-cos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. Practica -->
+    <section class="targeta" aria-labelledby="titol-repte">
+      <h2 id="titol-repte">6. Posa't a prova!</h2>
+      <p id="repte-pregunta" class="repte-pregunta"></p>
+      <form id="repte-form" class="formulari repte-form" autocomplete="off">
+        <label class="camp">
+          <span>La teva resposta (en litres)</span>
+          <input id="repte-resposta" type="text" inputmode="decimal" required>
+        </label>
+        <div class="repte-botons">
+          <button type="submit" class="boto">Comprova</button>
+          <button type="button" id="repte-nou" class="boto boto-secundari">Un altre repte</button>
+        </div>
+      </form>
+      <div id="repte-feedback" class="repte-feedback" aria-live="polite"></div>
+      <p class="marcador">Encerts: <strong id="encerts">0</strong> de <strong id="intents">0</strong></p>
+    </section>
+  </main>
+
+  <footer class="peu">
+    <p>Recorda: <strong>1 L = 10 dL = 100 cL = 1&#8239;000 mL</strong> · <strong>1 dm³ = 1 L</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
